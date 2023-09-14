@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+ 
+      
+      .container {
+        max-width: 400px;
+        background-color: #e2f6f4;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+
+      }
+      
+      .login-container h1 {
+        margin-bottom: 20px;
+      }
+      
+      .login-form input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      
+      .login-form button {
+        width: 100%;
+        padding: 10px;  
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        cursor: pointer;
+      }
+      
+      .login-form button:hover {
+        background-color: #0056b3;
+      }
+      
+      .login-container p {
+        margin-top: 10px;
+      }
+      
+      .login-container a {
+        color: #007bff;
+        text-decoration: none;
+      }
+      
+      .login-container a:hover {
+        text-decoration: underline;
+      }
+      
+
+
+
+</style>
+
+
+  {% include 'include/alert.html' %}
+<div class="container  mt-5">
+  
+
+    <div class="login-container">
+   
+      <h1  class="fw-bold " style="color: #000000;" >Login</h1>
+     
+      <form  action="{% url 'login' %}"  method="POST" class="login-form">
+        {% csrf_token %}
+        <label>Email</label>
+        <input type="text" placeholder="Enter email" required  name="email">
+        <label>Password</label>
+        <input type="password" placeholder="Password" required  name="password">
+        <a href="{% url 'foregotpassword' %}" >Forgot password ?  </a>
+
+        <button type="submit">Login</button>
+      </form>
+      <p>Don't have an account? <a href="{% url 'register' %}">Sign Up</a></p>
+    </div>
+  </div>
+
+
+{% endblock %}

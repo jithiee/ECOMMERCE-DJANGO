@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<style>
+  body {
+    background-color:#b3d9ff;
+
+  }
+  .car-list-container {
+  
+    margin: 0 auto;
+   font-family: Arial, sans-serif;
+  }
+
+  .car-list-header {
+    background-color: #333;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  table {
+   max-width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f7f7f7;
+  
+  }
+
+  th, td {
+    padding: 30px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+
+  
+  }
+
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  .car-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+  }
+
+  .action-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-content: center;
+  
+  }
+
+  .add-button {
+    background-color: #00b300;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+  }
+
+  .edit-button {
+    background-color:#22A7F0;
+    color: white;
+    border: 2px solid ;
+    border-radius: 10px;
+    padding: 5px 30px 5px;
+  }
+
+  .delete-button {
+    background-color: #ff2b2b;
+    color: white;
+    border: 2px solid ;
+    border-radius: 10px;
+    padding: 5px 30px 5px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .car-list-container {
+      padding: 10px;
+    }
+
+
+    .action-buttons {
+      flex-direction: column;
+      gap: 5px;
+    }
+  }
+</style>
+
+<form class="d-flex" style="margin-left: 25%;  margin-right: 25%; margin-top: 50px; margin-bottom: -30px;"  >
+
+  <input  method="GET"  class="form-control me-2 " type="search " placeholder="Search" aria-label="Search"  name="search" id="search" >
+  
+  <button class="btn btn-outline-dark" type="submit">Search</button>
+</form> 
+<div class="car-list-container ">
+  <a href="{% url 'car_insert' %}">
+    <button class="add-button  me-5 " >Add New Car</button> <br> <br>
+  </a>
+  <table>
+    <thead class="car-list-header">
+      <tr>
+        <th>ID</th>
+        <th>Make</th>
+        <th>Model</th>
+        <th>Year</th>
+        <th>Transmission</th>
+        <th>Rent</th>
+        <th>Available</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for car in vehicles %}
+        <tr>
+          <td>{{ car.id }}</td>
+          <td>{{ car.make }}</td>
+          <td>{{ car.model }}</td>
+          <td>{{ car.year }}</td>
+          <td>{{ car.transmission }}</td>
+          <td>₹ {{ car.price }}</td>
+          <td>{{ car.is_available }}</td>
+          <td>{{ car.description }}</td>
+          <td class="action-buttons">
+            <a href="{% url 'car_update' car.id %}">
+              <button class="edit-button">UPDATE</button>
+            </a>
+            <a href="{% url 'car_delete' car.id %}">
+              <button class="delete-button">DELETE</button>
+            </a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}

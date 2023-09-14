@@ -1,0 +1,164 @@
+{% extends  'base.html' %} 
+{%load static%}
+{%block title %}
+Home
+{%endblock %}
+{%block content %}
+
+
+<style>
+ 
+  .card_home {
+    width: 100%;
+    max-width: 15rem;
+    margin: 20px;
+    border: none;
+    border-radius: 10px  ;
+    box-shadow: 0 10px 6px rgba(0, 0, 0, 0.1);
+   
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .card_home:hover {
+    transform: scale(1.04);
+    border: 1px solid #19B5FE ;
+
+  }
+
+  .card_home .card-img-top {
+
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    margin: 20px;
+  }
+
+  .card_home .card-img-top:hover {
+    transform: scale(1.1);
+  }
+
+  .card_home .card-body {
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .card_home .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+    transition: color 0.3s ease-in-out;
+  }
+
+  .card_home .card-title:hover {
+    color: #e74c3c;
+  }
+
+  .card_home .card-subtitle {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 5px;
+
+  }
+
+  .card_home h6 {
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-top: 10px;
+    color: #e74c3c;
+  }
+
+  .hmbtn {
+    margin-top: 15px;
+  }
+
+  .hmbtn .btn-primary {
+    background-color: #3498db;
+    border-color: #3498db;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  .hmbtn .btn-primary:hover {
+    background-color: #2980b9;
+    border-color: #2980b9;
+  }
+
+  .hmbtn .btn-primary:focus {
+    background-color: #2980b9;
+    border-color: #2980b9;
+    box-shadow: none;
+  }
+
+  .hmbtn .btn-primary:active {
+    background-color: #3498db;
+    border-color: #3498db;
+  }
+
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .card_home {
+      max-width: 100%;
+   
+    }
+  }
+  .imgnaber {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -100px;
+   
+   
+  }
+  .imgnaber img {
+    max-width:100%;
+
+  }
+
+</style>
+
+<div class="imgnaber" >
+<img src="https://st3.depositphotos.com/2885805/17111/v/450/depositphotos_171115794-stock-illustration-car-sharing-abstract-design-concept.jpg">
+
+</div>
+
+<div class="ms-5" >
+
+
+{% for car in Vehicles %}
+
+<div class="d-inline-block ps-5 m-4 ms-4"  >
+<div class="card_home  " style="width: 13rem;  margin-left: -40px; ">
+   
+    <a href="#"> <img class="card-img-top" src="{{car.car_img.url}}" alt="Card image cap"> </a>
+    <div class="card-body">
+      <h5 class="card-title">{{car.make}}</h5>
+      <h6 style="font-weight: bold;  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; " class="card-title p-1  ">₹ {{car.price}}</h6 >
+      
+      <div class="hmbtn">
+        
+      
+        {% if car.id in booked_cars %} 
+
+        <a  href="" class="btn btn-danger text-xl-center">Not Available  </a>
+      
+        {% else %}
+        <a  href="{% url 'view' car.id %}" class="btn btn-primary text-xl-center">Views details  </a>
+          
+        {% endif %} 
+          
+       
+      </div>
+  
+    </div>
+ 
+  </div>
+</div>
+
+
+{% endfor %}
+</div>
+
+
+{%endblock %}   

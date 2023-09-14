@@ -1,0 +1,173 @@
+
+
+
+  <style>
+    
+            
+    .shake{
+      animation-name: shake;
+      -webkit-animation-name: shake;
+      -moz-animation-name: shake;
+  animation-duration: 1s;
+      -webkit-animation-duration: 1s;
+      -moz-animation-duration: 1s;
+  animation-iteration-count: infinite;
+      -webkit-animation-iteration-count: infinite;
+      -moz-animation-iteration-count: infinite;
+      }
+      
+  @keyframes shake {
+      0%  {transform: translate(1px, 1px) rotate(0deg);}
+      10% {transform: translate(-1px, -2px) rotate(-1deg);}
+      20% {transform: translate(-3px, 0px) rotate(1deg);}
+      30% {transform: translate(3px, 2px) rotate(0deg);}
+      40% {transform: translate(1px, -1px) rotate(1deg);}
+      50% {transform: translate(-1px, 2px) rotate(-1deg);}
+      60% {transform: translate(-3px, 1px) rotate(0deg);}
+      70% {transform: translate(3px, 1px) rotate(-1deg);}
+      80% {transform: translate(-1px, -1px) rotate(1deg);}
+      90% {transform: translate(1px, 2px) rotate(0deg);}
+      100% {transform: translate(1px, -2px) rotate(-1deg);}
+  }
+      li{
+        
+        color:black;
+      }   
+                    
+  .wobble {
+    animation-name: wobble;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes wobble {
+    0% {transform: translateX(0) rotate(0deg);}
+    15% {transform: translateX(-30px) rotate(-5deg);}
+    30% {transform: translateX(15px) rotate(3deg);}
+    45% {transform: translateX(-15px) rotate(-3deg);}
+    60% {transform: translateX(9px) rotate(2deg);}
+    75% {transform: translateX(-6px) rotate(-1deg);}
+    100% {transform: translateX(0) rotate(0deg);}
+  }  
+  .navbar{
+    z-index: 999;
+  }
+
+
+  </style>
+
+
+
+  <nav class=" navbar  navbar-container  navbar-expand-lg navbar-light bg-light "  style="position:sticky; top:0; ">
+      <div class="container-fluid " >
+        <a class="navbar-brand " href="{% url 'home' %}"><img class="log" src="https://atollrentacar.com/wp-content/uploads/2022/06/mainn.png"  ></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+            <li class="nav-item">
+              <a class="nav-link" href="{%url 'home' %}"> <i class="wobble fas fa-home text-dark  "></i> Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{%url 'home' %}"> About</a>
+            </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="{%url 'cars' %}"> Cars</a>
+            </li>
+
+
+          
+            
+            <li class="nav-item">
+              
+              <a class="nav-link active" aria-current="page" href="#">Contact</a>
+            </li>
+
+          
+              
+          </ul>
+            <form action="/" method="get">
+              <div class="dropdown me-3">
+                  <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Filter
+                  </button>
+                  <ul class="dropdown-menu p-3">
+                      <fieldset>
+                          <legend style="color: blue;">Color</legend>
+                          <li><label><input type="checkbox" name="color" value="Red"> Red</label></li>
+                          <li><label><input type="checkbox" name="color" value="Blue"> Blue</label></li>
+                          <li><label><input type="checkbox" name="color" value="Black"> Black</label></li>
+                          <li><label><input type="checkbox" name="color" value="White"> White</label></li>
+                          <li><label><input type="checkbox" name="color" value="Orange"> Orange</label></li>
+                        
+                      </fieldset>
+          
+                      <fieldset>
+                          <legend style="color: blue; margin-top: 10px;">Price</legend>
+                          <li><label><input type="checkbox" name="price" value="0 - 10000"> < 10000</label></li>
+                          <li><label><input type="checkbox" name="price" value="10000 - 15000"> 10000 - 15000</label></li>
+                          <li><label><input type="checkbox" name="price" value="15000 - 20000"> 15000 - 20000</label></li>
+                          <li><label><input type="checkbox" name="price" value="20000 - 100000"> 20000 < </label></li>
+                      </fieldset>
+          
+                      <fieldset class="ms-5">
+                          <legend style="color: blue;">Fuel </legend>
+                          <li><label><input type="checkbox" name="fuel" value="Diesel"> Diesel</label></li>
+                          <li><label><input type="checkbox" name="fuel" value="Petrol"> Petrol</label></li>
+                          <li><label><input type="checkbox" name="fuel" value="Electric"> Electric</label></li>
+                      </fieldset>
+          
+                      <button class="btn btn-success mt-3 ms-5" type="submit">Apply</button>
+                  </ul>
+              </div>
+          </form>
+          
+
+
+
+
+
+
+
+
+
+          </div>
+          
+          <form class="d-flex" action="/" method="get"  >
+            
+            <input class="form-control me-2" type="search" placeholder="Search car" aria-label="Search" name="search" id="search" >
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form> 
+          
+          
+          {% if user.id is None %}
+
+          <div style="font-size: larger; font-weight: bold;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; " class="ms-2"  > <small>Welcome <p>Gust</p>  </small></div>
+          <div class="d-flex gap-4 ms-4" >
+            
+            <a href="{%url 'login' %}" ><button type="button" class="btn btn-dark  fw-bold"><i class=" shake fas fa-sign-in-alt text-success"></i> Sign in</button></a> 
+          <a href="{% url 'register' %}" > <button type="button" class="btn btn-info fw-bold " > <i class="shake  fas fa-user-plus text-light"></i> Register</button></a>
+          
+          </div>
+
+          {% else  %}
+          <div class="ms-3"  style="font-size: larger; font-weight: bold; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;  "  > <small  > Welcome  </small></div>
+          <div class="d-flex gap-4 ms-4" >
+            
+            <a href="{% url 'dashboard' %}" >
+            <button type="button" class=" btn btn-dark  " style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  ">
+              <i class="fa-regular fa-user pe-2  text-info"></i>   {{user.first_name}}
+          </button>
+          </a> 
+          
+          </div>
+        
+
+          {% endif %}
+        
+        </div>
+      </div>
+    </nav>
+    

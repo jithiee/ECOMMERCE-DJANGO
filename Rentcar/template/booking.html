@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load static  %}
+
+{% block content %}
+<style>
+
+  .form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+  
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+   
+  }
+
+  .form-input + .form-input {
+    margin-top: 10px; 
+  }
+
+ 
+  .form-submit {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+
+  
+  .form-submit:hover {
+    background-color: #0056b3;
+  }
+  body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.video-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    
+}
+
+video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5); 
+}
+
+h1, p {
+    color: #fff;
+    text-align: center;
+}
+</style>
+
+<body>
+  <div class="video-container">
+      <video autoplay loop muted>
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-red-sports-car-74-large.mp4" type="video/mp4">
+        
+      </video>
+      <div class="content">
+
+          <h1>Welcome to Booking</h1>
+          
+          <div class="form-container mt-5 p-5">
+            
+            {% for message in messages %}
+              {% if message.tags == 'success' %}
+                <div class="alert alert-success mt-3 text-success" id="message-alert">{{ message }}</div>
+              {% else %}
+                <div class="alert alert-warning text-danger mt-3" id="message-alert">{{ message }}</div>
+              {% endif %}
+            {% endfor %}
+              
+            <form action="" method="POST" class="frms text-center">
+              {% csrf_token %}
+              Picking Date : {{form.picking_date}} <br> <br>
+              Return Date  : {{form.return_date}}
+             
+              <button class="form-submit" type="submit">Book Now</button>
+            </form>
+          </div>
+      </div>
+  </div>
+
+
+
+
+{% endblock  %}
+
+<script>
+  setTimeout(function() {
+      var messageAlerts = document.querySelectorAll('#message-alert');
+      if (messageAlerts) {
+          messageAlerts.forEach(function(alert) {
+              alert.style.display = 'none';
+          });
+      }
+  }, 5000);
+</script>
+    
+

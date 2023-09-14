@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+
+{% endblock %}
+
+
+{% block content %}
+<style>
+    .card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: #f5f5f5;
+    }
+    
+    .card-title {
+        color: #333;
+        font-size: 24px;
+    }
+    
+    .card-text {
+        color: #555;
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    
+    .btn-primary {
+        background-color: #3498db;
+        border-color: #3498db;
+        transition: background-color 0.3s, border-color 0.3s;
+    }
+    
+    .btn-primary:hover {
+        background-color: #2980b9;
+        border-color: #2980b9;
+    }
+    
+    .btn-dark {
+        background-color: #34495e;
+        border-color: #34495e;
+        transition: background-color 0.3s, border-color 0.3s;
+    }
+    
+    .btn-dark:hover {
+        background-color: #2c3e50;
+        border-color: #2c3e50;
+    }
+
+    /* Additional Styling */
+    .card-img-top {
+        border-radius: 10px 10px 0 0;
+        max-height: 300px;
+        object-fit: cover;
+    }
+
+    .card-details {
+        padding: 20px;
+    }
+
+    .divider {
+        border-top: 1px solid #ddd;
+        margin: 20px 0;
+    }
+    body, html {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .video-container {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        height:120%;
+        
+    }
+    
+    video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.5);
+    }
+    
+    h1, p {
+        color: #fff;
+        text-align: center;
+    }
+    
+
+</style>
+
+<div class="video-container">
+    <video autoplay loop muted>
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-luxury-white-sports-car-in-the-highway-at-sunset-35540-large.mp4" type="video/mp4">
+        
+    </video>
+    <div class="content">
+        <!-- Your website content goes here -->
+        <h1 >Welcome to  {{ car.make }} {{ car.model }}</h1>
+        
+        
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <div class="card">
+                        <img src="{{ car.car_img.url }}" class="card-img-top" alt="Car Image">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ car.make }} {{ car.model }}</h5>
+                            <p class="card-text"><strong>Year:</strong> {{ car.year }}</p>
+                            <p class="card-text"><strong>Transmission:</strong> {{ car.transmission }}</p>
+                            <p class="card-text"><strong>Rent:</strong> {{ car.price }} (per day)</p>
+                            <p class="card-text"><strong>Fuel:</strong> {{ car.fuel }}</p>
+                            <p class="card-text"> <strong>Color:</strong> {{ car.color }}</p>
+                            <p class="card-text">{{ car.description }}</p>
+                            {% if user.id is not None %}
+
+                            <div class="d-flex justify-content-between">
+                                <a href="{% url 'booking' car.id %}" class="btn btn-primary">Booking</a>
+                                <a href="{% url 'home' %}" class="btn btn-dark">Go back</a>
+                            </div>
+                            {%else %}
+                          
+                            <div class="d-flex justify-content-between">
+                                <a href="{% url 'login' %}" class="btn btn-primary">Booking</a>
+                                <a href="{% url 'home' %}" class="btn btn-dark">Go back</a>
+                            </div>
+                            {%endif%}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
