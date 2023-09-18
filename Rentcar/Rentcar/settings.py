@@ -108,10 +108,10 @@ POSTGRESPASSOWRD = os.getenv('POSTGRESPASSOWRD')
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME':'backends',
+        'NAME':'rentcars',
         'USER':'mysuperuser',
         'PASSWORD':POSTGRESPASSOWRD,
-        'HOST':'backends.ckxhihyfltqd.eu-north-1.rds.amazonaws.com',
+        'HOST':'rentcars.caz7kovkdc8n.us-east-1.rds.amazonaws.com',
        'PORT':'5432',
        
     }

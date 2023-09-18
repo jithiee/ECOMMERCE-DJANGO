@@ -13,7 +13,7 @@ class MyAccountManager(BaseUserManager):
             raise ValueError('User must have an username') 
         
         user = self.model(
-            email = self.normalize_email(email), #enter any capital letter email the  normalize_email make to smalletter
+            email = self.normalize_email(email),   #enter any capital letter email the  normalize_email make to smalletter
             username = username,
             first_name = first_name,
             last_name = last_name,  
