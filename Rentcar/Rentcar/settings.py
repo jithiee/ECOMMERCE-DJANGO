@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'accounts',
     'Admin_panel',
     'Booking',
-    'fontawesomefree'
+    # 'fontawesomefree'
    
     
 ]
