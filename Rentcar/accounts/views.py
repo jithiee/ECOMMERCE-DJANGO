@@ -39,6 +39,7 @@ def register(request):
             # print(username)
             
             user = Account.objects.create_user(first_name =first_name,last_name = last_name,email =email ,username=username )
+            print(user.query)
             user.phone_number = phone_number
             user.set_password(password)
             user.is_active= False
@@ -46,7 +47,7 @@ def register(request):
             # print('1')
             
             #user activation 
-            current_site = get_current_site(request)
+            current_site = get_current_site(request) #
             mail_subject = "please activate your account"  # Fixed typo here    
             # print('2')
             message = render_to_string('verification_email.html',{
