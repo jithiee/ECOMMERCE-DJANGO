@@ -110,9 +110,10 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME':'rentcars',
         'USER':'mysuperuser',
-        'PASSWORD':os.getenv('POSTGRESPASSOWRD'),
+        'PASSWORD':'userjithin',
         'HOST':'rentcars.caz7kovkdc8n.us-east-1.rds.amazonaws.com',
         'PORT':'5432',
+       
        
     }
 }   
