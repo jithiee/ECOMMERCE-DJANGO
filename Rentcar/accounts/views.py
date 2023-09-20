@@ -39,7 +39,6 @@ def register(request):
             # print(username)
             
             user = Account.objects.create_user(first_name =first_name,last_name = last_name,email =email ,username=username )
-            print(user.query)
             user.phone_number = phone_number
             user.set_password(password)
             user.is_active= False
