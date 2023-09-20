@@ -103,16 +103,16 @@ AUTH_USER_MODEL = 'accounts.Account'
 # }   
 
 
-POSTGRESPASSOWRD = os.getenv('POSTGRESPASSOWRD')
+
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME':'rentcars',
         'USER':'mysuperuser',
-        'PASSWORD':'mysuperuser',
+        'PASSWORD':os.getenv('POSTGRESPASSOWRD'),
         'HOST':'rentcars.caz7kovkdc8n.us-east-1.rds.amazonaws.com',
-       'PORT':'5432',
+        'PORT':'5432',
        
     }
 }   
