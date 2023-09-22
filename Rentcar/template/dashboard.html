@@ -364,7 +364,7 @@
                     <div class="user-avatar">
                         <a class="edit-avatar" href="#"></a><img src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png" alt="User"></div>
                     <div class="user-data">
-                        <h4>Jithin</h4><span>email@gmail.com</span>
+                        <h4>{{user.first_name}}</h4><span>{{user.email}}</span>
                     </div>
                 </div>
             </aside>
@@ -399,12 +399,16 @@
                         <tr>
                             <td>
                                 <div class="product-item">
-                                    <a class="product-thumb" href="#"><img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGZhc3QlMjBjYXJ8ZW58MHx8MHx8fDA%3D&w=1000&q=80" alt="Product"></a>
+                                    <a class="product-thumb" href=""><img src="{{usercar.car.car_img.url}}" alt="Product"></a>
                                     <div class="product-info">
                                         <h4 class="product-title"><a href="#">{{user.model}}</a></h4>
-                                        <div class="text-lg text-medium text-muted">picking date :  {{usercar.picking_date}}</div>
-                                        <div>Availability:
-                                            <div class="d-inline text-success">In Stock</div>
+                                     
+                                       
+                                        <div>Picking date :
+                                            <div class="d-inline text-success"> {{usercar.picking_date}}</div>
+                                        </div>
+                                        <div>Return date :  
+                                            <div class="d-inline text-success">  {{usercar.return_date}}</div>
                                         </div>
                                     </div>
                                 </div>

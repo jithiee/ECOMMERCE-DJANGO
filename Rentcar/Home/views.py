@@ -5,6 +5,7 @@ from django.views.generic import View
 from django.db.models import Q
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from datetime import date 
 
 # Create your views here.
 
@@ -149,7 +150,7 @@ def cars(request):
        
 # @login_required(login_url = 'login')
 def dashboard(request):
-    usercar = Vehicle.objects.all()
+    usercar = BookingCar.objects.filter(user=request.user,return_date__gt=date.today())
     
     
     condext = {

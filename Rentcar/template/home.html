@@ -141,7 +141,7 @@ Home
       
         {% if car.id in booked_cars %} 
 
-        <a  href="" class="btn btn-danger text-xl-center">Not Available  </a>
+        <a  href="" class="btn btn-danger text-xl-center">Available on </a>
       
         {% else %}
         <a  href="{% url 'view' car.id %}" class="btn btn-primary text-xl-center">Views details  </a>
