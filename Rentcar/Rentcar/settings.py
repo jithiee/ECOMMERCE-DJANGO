@@ -29,7 +29,8 @@ SECRETKEY=os.getenv('SECRETKEY')
 DEBUG = True
 
 ALLOWED_HOSTS = ['107.23.241.52',
-                 "https://renthub.site/"]
+                 "https://renthub.site/",
+                 "renthub.site"]
 
 
 # Application definition
