@@ -28,7 +28,8 @@ SECRETKEY=os.getenv('SECRETKEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['107.23.241.52']
+ALLOWED_HOSTS = ['107.23.241.52',
+                 "https://renthub.site/"]
 
 
 # Application definition
