@@ -119,10 +119,18 @@ def payment(request, book_id):
         book=BookingCar.objects.get(id=book_id)
     except Exception as e:
         print(e)
+      
+    picking_date = book.picking_date
+    return_date = book.return_date
+    total_days =( return_date - picking_date).days
+    amount = book.car.price * total_days
+    
+      
+        
     context = {
         'booking_id':book_id,
         'book': book,
-        'amount':book.car.price,
+        'amount':amount,
         'form': forms,
     }
     return render(request, 'payment.html', context)
