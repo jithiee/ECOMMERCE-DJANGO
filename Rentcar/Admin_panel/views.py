@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import user_passes_test
 
 # Define a custom user test function to check if the user is a superadmin
 def is_superadmin(user):
-    return user.is_authenticated and user.is_superadmin
+    return user.is_superadmin
 
 @user_passes_test(is_superadmin)
 def car_list(request):
