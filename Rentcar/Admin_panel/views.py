@@ -75,7 +75,7 @@ def adminsearch(request ):
 
    
 def admin_access(request):
-    if request.is_superuser:
+    if request.user.is_superuser:
        return render(request,'admin_access.html')    
     else:
        return redirect('home')
