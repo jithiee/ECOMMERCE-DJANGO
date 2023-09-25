@@ -29,7 +29,7 @@ SECRETKEY=os.getenv('SECRETKEY')
 DEBUG = True
 
 ALLOWED_HOSTS = ["www.renthub.site","renthub.site"]
-CSRF_TRUSTED_ORIGINS = ["www.renthub.site","renthub.site"]
+CSRF_TRUSTED_ORIGINS = ["https://www.renthub.site","https://renthub.site"]
 
 # Application definition
 
