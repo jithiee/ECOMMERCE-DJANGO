@@ -8,7 +8,7 @@ class RegistrationForm(forms.ModelForm):
         
     }))
     conform_password = forms.CharField(widget=forms.PasswordInput(attrs={
-        'placeholder':'comform Password',
+        'placeholder':'conform Password',
          'class' : 'form_control',
         
     }))
