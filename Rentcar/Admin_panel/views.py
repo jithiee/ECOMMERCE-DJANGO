@@ -5,18 +5,22 @@ from .forms import Carforms
 from django.contrib.auth.decorators import user_passes_test
 # Create your views here.
 
+# Define a custom user test function to check if the user is a superadmin
+def is_superadmin(user):
+    return user.is_authenticated and user.is_superadmin
 
+@user_passes_test(is_superadmin)
 def car_list(request):
-    if request.user.is_superadmin:
+    # if request.user.is_superadmin:
         cars = Vehicle.objects.all()
         context = {'cars':cars}
         return render(request,'car_list.html',context)
-    else:
-        return redirect('home')
+    # else:
+    #     return redirect('home')
 
 
 
-
+@user_passes_test(is_superadmin)
 def car_upload_forms(request, car_id=0):
    if request.user.is_superadmin:
     if request.method == 'GET':
@@ -73,12 +77,11 @@ def adminsearch(request ):
         return render(request, 'adminsearch.html', context)
 
 
-   
+@user_passes_test(is_superadmin) 
 def admin_access(request):
-    if request.user.is_superadmin:
+    
        return render(request,'admin_access.html')    
-    else:
-       return redirect('home')
+   
     
    
 
