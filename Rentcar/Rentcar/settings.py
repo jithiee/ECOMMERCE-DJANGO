@@ -32,7 +32,6 @@ ALLOWED_HOSTS = ["www.renthub.site","renthub.site"]
 CSRF_TRUSTED_ORIGINS = ["https://www.renthub.site","https://renthub.site"]
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',

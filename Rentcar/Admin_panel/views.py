@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import user_passes_test
 
 
 def car_list(request):
-    if request.user.is_superuser:
+    if request.user.is_superadmin:
         cars = Vehicle.objects.all()
         context = {'cars':cars}
         return render(request,'car_list.html',context)
@@ -18,7 +18,7 @@ def car_list(request):
 
 
 def car_upload_forms(request, car_id=0):
-   if request.user.is_superuser:
+   if request.user.is_superadmin:
     if request.method == 'GET':
     
         if car_id == 0:
@@ -75,7 +75,7 @@ def adminsearch(request ):
 
    
 def admin_access(request):
-    if request.user.is_superuser:
+    if request.user.is_superadmin:
        return render(request,'admin_access.html')    
     else:
        return redirect('home')
