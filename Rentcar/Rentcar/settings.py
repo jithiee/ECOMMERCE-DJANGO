@@ -26,7 +26,7 @@ SECRETKEY=os.getenv('SECRETKEY')
 # SECURITY WARNING: keep the secret key used in production secret!
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["www.renthub.site","renthub.site"]
 CSRF_TRUSTED_ORIGINS = ["https://www.renthub.site","https://renthub.site"]
